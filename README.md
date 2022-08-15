@@ -5,6 +5,6 @@
 The origins readme: https://github.com/jaakko0625/ssmgr/blob/main/README_copy.md
 
 ## TODO
-- [ ] quickstar subscribe
+- [ ] quick subscription
 - [ ] random subscribe link  
 - [ ] subscribe show the combo information
