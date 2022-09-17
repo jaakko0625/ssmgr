@@ -12,22 +12,22 @@
                 <md-checkbox style="margin-top: 15px;" ng-model="publicInfo.ip" ng-change="changeLinkType()" ng-true-value="1" ng-false-value="0">{{ '将域名转换为IP地址' | translate }}</md-checkbox>
                 <md-checkbox ng-model="publicInfo.flow" ng-change="changeLinkType()" ng-true-value="1" ng-false-value="0">{{ '显示流量信息' | translate }}</md-checkbox>
                 <md-dialog-actions layout="row" layout-align="center center" style="margin-top: 25px;">
-                    <md-button class="md-primary" ngclipboard data-clipboard-text="{{ publicInfo.subscribeLink }}" ngclipboard-success="toast(e);">
-                        复制链接
+                    <md-button class="md-primary" ngclipboard data-clipboard-text="{{ publicInfo.subscribeLink }}" ngclipboard-success="toast(e);" >
+                        {{ '复制链接' | translate }}
                     </md-button>
                     <md-button ng-if="publicInfo.userType === 'user'" class="md-primary" ng-click="publicInfo.toUpdateSubscribePage()">
-                        更换链接
+                        {{ '更换链接' | translate }}
                     </md-button>
                 </md-dialog-actions>
             </div>
             <div ng-if="publicInfo.updateSubscribePage">
-                若更换链接，原有的订阅链接将失效，是否继续？
+                {{ '若更换链接，原有的订阅链接将失效，是否继续？' | translate }}
                 <md-dialog-actions layout="row" layout-align="center center" style="margin-top: 25px;">
                     <md-button class="md-primary" ng-click="publicInfo.updateSubscribePage = false">
-                        取消
+                        {{ '取消' | translate }}
                     </md-button>
                     <md-button class="md-primary" ng-click="publicInfo.updateLink()">
-                        继续
+                        {{ '继续' | translate }}
                     </md-button>
                 </md-dialog-actions>
             </div>

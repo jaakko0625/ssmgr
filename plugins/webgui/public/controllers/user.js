@@ -222,6 +222,7 @@ app
 ])
 .controller('UserAccountController', ['$scope', '$http', '$mdMedia', 'userApi', '$filter', 'payDialog', 'qrcodeDialog', '$interval', '$localStorage', 'changePasswordDialog', 'payByGiftCardDialog', 'subscribeDialog', '$q', '$state', 'wireGuardConfigDialog',
   ($scope, $http, $mdMedia, userApi, $filter, payDialog, qrcodeDialog, $interval, $localStorage, changePasswordDialog, payByGiftCardDialog, subscribeDialog, $q, $state, wireGuardConfigDialog) => {
+    const config = $scope.config;
     $scope.setTitle('账号');
     $scope.setFabButton($scope.config.multiAccount ? () => {
       $scope.createOrder();
@@ -327,6 +328,26 @@ app
         return 'trojan://' + encodeURIComponent(account.port + ':' + account.password) + '@' + server.host + ':' + server.tjPort + '#' + encodeURIComponent(server.name);
       }
     };
+
+    //传入订阅链接将订阅链接转换为base64格式并替换不合规字符
+    const urlsafeBase64 = str => {
+      return Buffer.frome(str).toString('base64').replace(/=/g, '').replace(/\+/, '-').replace(/\//g, '_');
+    };
+
+    //定义rss变量保存订阅链接token前面的api
+    const rss = `${config.site}/api/user/account/subscribe`;
+
+    //shadowrocket一键订阅方法
+    $scope.shadowrocket = subscribe => {
+      let str = '';
+      let base64 = urlsafeBase64(`${rss}/${subscribe}?type=shadowrocket&ip=0&flow=0`);
+      str = `shadowrocket://add/sub://${base64}`;
+      return str;
+    };
+
+    //定义clash的URL Scheme 方法
+
+
 
     $scope.getServerPortData = (account, serverId) => {
       account.currentServerId = serverId;

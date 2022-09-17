@@ -175,6 +175,8 @@
                 <md-button class="md-primary" ng-click="showWireGuard(a.serverInfo, a)" ng-show="isWG(a.serverInfo)" ng-if="!config.simple">{{ '账号二维码' | translate }}</md-button>
                 <md-button class="md-primary" ng-click="showQrcodeDialog(a.serverInfo, a)" ng-show="isTJ(a.serverInfo)" ng-if="!config.simple">{{ '账号二维码' | translate }}</md-button>
                 <md-button class="md-primary" ng-click="subscribe(a.id)" ng-if="config.subscribe">{{ '订阅链接' | translate }}</md-button>
+                <md-button class="md-primary" ng-if="config.subscribe"><a class="md-primary" style="text-decoration:none;text-transform:capitalize;" href="{{shadowrocket(a.subscribe)}}">IOS苹果Shadowrocket一键订阅</a></md-button>
+                <md-button class="md-primary" ng-click="subscribe(a.id)" ng-if="config.subscribe">{{ 'Clash快速导入订阅' | translate }}</md-button>
             </md-card-content>
         </md-card>
     </div>
